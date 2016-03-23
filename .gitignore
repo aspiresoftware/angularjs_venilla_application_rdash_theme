@@ -1,0 +1,18 @@
+###########
+# Globals
+###########
+
+# Temporary files
+/.tmp
+/bower_components
+/node_modules
+
+# Build artifacts
+/dist
+/war
+/~
+
+#####################
+# Platform-specific
+#####################
+
