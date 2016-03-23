@@ -16,7 +16,7 @@ exports.paths = {
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',
-  styles: ['src/styles/**/*.scss'],
+  styles: ['src/{app,components,core,styles}/**/*.scss'],
   images: ['src/assets/images/**/*']
 };
 

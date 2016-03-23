@@ -17,9 +17,9 @@ gulp.task('scripts', function() {
     .pipe($.jscs({configPath: '.jscsrc'}))
     .pipe($.eslint())
     .pipe($.eslint.format())
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')))
     .pipe(browserSync.reload({
       stream: true
     }))
-    .pipe($.size());
+    .pipe($.size())
+    .pipe(gulp.dest(conf.paths.tmp));
 });

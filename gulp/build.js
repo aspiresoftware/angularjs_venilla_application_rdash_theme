@@ -57,36 +57,36 @@ gulp.task('html', ['inject', 'partials'], function () {
   // Patched version of gulp-useref required for sourcemaps option
   var assets;
 
-  return gulp.src('src/*.html')
+  return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
     .pipe(jsFilter)
     .pipe($.sourcemaps.init())
     .pipe($.ngAnnotate())
-    .pipe(conf.production ? $.uglify({
+    .pipe($.uglify({
         preserveComments: $.uglifySaveLicense
-      }) : $.util.noop()).on('error', conf.errorHandler('Uglify'))
+      })).on('error', conf.errorHandler('Uglify'))
     .pipe($.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     .pipe($.sourcemaps.init())
     .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
-    .pipe(conf.production ? $.minifyCss({
-        processImport: false
-      }) : $.util.noop())
+    .pipe($.minifyCss({
+      processImport: false
+    }))
     .pipe($.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
     .pipe(htmlFilter)
-    .pipe(conf.production ? $.minifyHtml({
+    .pipe($.minifyHtml({
       empty: true,
       spare: true,
       quotes: true,
       conditionals: true
-    }) : $.util.noop())
+    }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
     .pipe($.size({

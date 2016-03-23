@@ -11,7 +11,8 @@ function isOnlyChange(event) {
 }
 
 gulp.task('watch', ['inject'], function () {
-  console.log("**********watch start");
+
+  console.log("***********watch start");
   gulp.watch([path.join(conf.paths.src, '/*.html'), 'bower.json'], ['inject']);
 
   gulp.watch([
@@ -36,5 +37,7 @@ gulp.task('watch', ['inject'], function () {
   gulp.watch(path.join(conf.paths.src, '/app/**/*.html'), function(event) {
     browserSync.reload(event.path);
   });
-  console.log("**********watch finish");
+
+  console.log("***********watch finish");
+
 });

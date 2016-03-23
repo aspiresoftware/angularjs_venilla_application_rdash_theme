@@ -31,7 +31,7 @@ gulp.task('inject', ['scripts', 'styles'], function () {
   };
 
   // inject bower components
-  return gulp.src(path.join(conf.paths.src, '/index.html'))
+  return gulp.src(path.join(conf.paths.src, '/*.html'))
     .pipe($.inject(injectStyles, injectOptions))
     .pipe($.inject(injectScripts, injectOptions))
     .pipe(wiredep(_.extend({}, conf.wiredep)))

@@ -47,9 +47,11 @@ browserSync.use(browserSyncSpa({
 }));
 
 gulp.task('serve', ['watch'], function () {
-  console.log("************serve start");
-  browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
-  console.log("************serve finish");
+  if (conf.production) {
+    browserSyncInit([conf.paths.dist, conf.paths.src]);
+  } else {
+    browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
+  }
 });
 
 gulp.task('serve:dist', ['build'], function () {
@@ -57,7 +59,7 @@ gulp.task('serve:dist', ['build'], function () {
 });
 
 gulp.task('serve:e2e', ['inject'], function () {
-  browserSyncInit([conf.paths.tmp, conf.paths.src], []);
+  browserSyncInit([conf.paths.tmp + '/serve', conf.paths.src], []);
 });
 
 gulp.task('serve:e2e-dist', ['build'], function () {
