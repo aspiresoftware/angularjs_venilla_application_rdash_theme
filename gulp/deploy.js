@@ -13,17 +13,16 @@ gulp.task('war', ['build'], function () {
       welcome: 'index.html',
       displayName: 'Gulp WAR'
     }))
-    .pipe($.zip('project.war'))
+    .pipe($.zip(conf.warFileName))
     .pipe(gulp.dest('war'));
 });
 
 gulp.task('deploy', ['war'], function() {
   rsync({
     ssh: true,
-    src: './' + conf.path.war + '/',
-    dest: conf.path.serverPath,
+    src: './' + conf.paths.war + '/' + conf.warFileName,
+    dest: conf.paths.serverPath + '/' + conf.warFileName,
     recursive: true,
-    deleteAll: true,
     syncDest: true,
     args: ['--verbose']
   }, function(error, stdout, stderr, cmd) {
