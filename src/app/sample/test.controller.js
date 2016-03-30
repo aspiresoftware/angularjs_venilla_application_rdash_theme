@@ -6,6 +6,6 @@
 
   /* @ngInject */
   function Test ($scope) {
-    $scope.name = 'hello';
+    $scope.name = 'world';
   }
-});
+})();
