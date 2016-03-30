@@ -52,6 +52,7 @@
     "karma": "^0.13.22",
     "lodash": "^4.6.1",
     "main-bower-files": "^2.11.1",
+    "rsyncwrapper": "^1.0.0",
     "wiredep": "^4.0.0",
     "wrench": "^1.5.8"
   }
