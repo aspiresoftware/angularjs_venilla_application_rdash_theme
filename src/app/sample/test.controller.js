@@ -5,7 +5,13 @@
     .controller('Test', Test);
 
   /* @ngInject */
-  function Test ($scope) {
-    $scope.name = 'world';
+  function Test (
+    $scope,
+    modelFactory) {
+    var modelData = {
+      fname: '',
+      lname: ''
+    };
+    $scope.user = modelFactory.create('user', modelData);
   }
 })();

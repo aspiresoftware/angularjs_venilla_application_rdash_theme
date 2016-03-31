@@ -1,12 +1,11 @@
-/*(function () {
+(function () {
   'use strict';
 
   angular.module('myApp')
-    .factory('delegatorService', ['delegatorService']);
+    .factory('delegatorService', delegatorService);
 
-    function delegatorService () {
-      return {
-
-      };
-    }
-});*/
+  /* @ngInject */
+  function delegatorService () {
+    return '';
+  }
+})();
