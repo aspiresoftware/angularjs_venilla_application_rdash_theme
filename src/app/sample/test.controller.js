@@ -7,11 +7,18 @@
   /* @ngInject */
   function Test (
     $scope,
-    modelFactory) {
-    var modelData = {
-      fname: '',
-      lname: ''
-    };
-    $scope.user = modelFactory.create('user', modelData);
+    modelFactory,
+    delegatorService,
+    User
+    ) {
+    $scope.user = modelFactory.create('user', User);
+    var url = 'users';
+    var userlist = delegatorService.resourceService(url);
+
+    userlist.query(function(successResult) {
+      $scope.list = successResult;
+    }, function(errorResult) {
+      console.log('Error: ' + errorResult);
+    });
   }
 })();
