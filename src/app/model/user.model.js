@@ -1,22 +1,18 @@
 (function () {
   'use strict';
 
-  angular.module('myApp')
+  angular.module('nd')
     .factory('User', User);
 
   /* @ngInject */
-  function User (
-    Address
-    ) {
+  function User () {
     return {
-      'Address': Address,
-      'company': '',
-      'email': '',
-      'id': '',
-      'name': '',
-      'phone': '',
       'username': '',
-      'website': ''
+      'password': '',
+      'access_token': '',
+      'expire_date': '',
+      'refresh_token': '',
+      'status': ''
     };
   }
 })();

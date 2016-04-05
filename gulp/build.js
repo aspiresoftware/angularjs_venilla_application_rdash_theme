@@ -10,8 +10,6 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'uglify-save-license', 'del', 'merge-stream']
 });
 
-var mainBowerFiles = require('main-bower-files');
-
 gulp.task('partials', function () {
   return gulp.src([
     path.join(conf.paths.src, '/app/**/*.html'),
@@ -26,7 +24,7 @@ gulp.task('partials', function () {
       quotes: true
     }))
     .pipe($.angularTemplatecache({
-      module: 'myApp',
+      module: 'nd',
       root: 'templateCacheHtml.js'
     }))
     .pipe(gulp.dest(conf.paths.tmp + '/partials/'))
@@ -92,32 +90,6 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.size({
       title: path.join(conf.paths.dist, '/'), showFiles: true
     }));
-});
-
-gulp.task('images', function() {
-  return gulp.src(conf.paths.images)
-    .pipe($.plumber({
-      handleError: conf.errorHandler
-    }))
-    .pipe($.cache($.imagemin({
-      optimizationLevel: 3,
-      progressive: true,
-      interlaced: true
-    })))
-    .pipe(gulp.dest(path.join(conf.paths.dist, 'assets', 'images')))
-    .pipe($.size());
-});
-
-// Only applies for fonts from bower dependencies
-// Custom fonts are handled by the "other" task
-gulp.task('fonts', function () {
-  return gulp.src(mainBowerFiles())
-    .pipe($.plumber({
-      handleError: conf.errorHandler
-    }))
-    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
-    .pipe($.flatten())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
 });
 
 gulp.task('clean', function () {

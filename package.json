@@ -55,5 +55,8 @@
     "rsyncwrapper": "^1.0.0",
     "wiredep": "^4.0.0",
     "wrench": "^1.5.8"
+  },
+  "dependencies": {
+    "psi": "^2.0.3"
   }
 }

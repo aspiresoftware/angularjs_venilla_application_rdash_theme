@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('myApp')
+  angular.module('nd')
     .controller('Test', Test);
 
   /* @ngInject */
