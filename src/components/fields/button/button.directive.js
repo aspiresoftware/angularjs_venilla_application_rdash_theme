@@ -16,7 +16,9 @@
     function link(scope) {
       scope.clickButton = function() {
         var promise = scope.ndClick();
-        console.log(promise);
+        promise.$promise.then(function(user) {
+          console.log(user);
+        });
       };
     }
   }

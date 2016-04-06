@@ -14,7 +14,15 @@
     $scope.login = login;
 
     function login() {
-      return LoginService.authentication($scope.user);
+      var authPromise = LoginService.authentication($scope.user);
+      return authPromise;
+      /*authPromise.$promise.then(function(result) {
+        $scope.user.access_token = result.access_token;
+        $scope.user.refresh_token = result.refresh_token;
+        $scope.user.expire_date = result.expire_date;
+        $scope.user.status = result.status;
+        return $scope.user;
+      });*/
     }
   }
 })();

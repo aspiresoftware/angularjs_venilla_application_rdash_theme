@@ -21,6 +21,6 @@
         url: PAGE_URL.error404,
         templateUrl: TEMPLATE_URL.error404
       });
-    $urlRouterProvider.otherwise(PAGE_URL.error404);
+    $urlRouterProvider.otherwise(PAGE_URL.root);
   }
 })();
