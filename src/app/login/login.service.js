@@ -4,15 +4,33 @@
 
   function LoginService (
     REST_URL,
-    delegatorService
+    DelegatorService,
+    urlTemplate,
+    CachedRequestHandler
     ) {
-    return {
-      authentication: authentication
+
+    var loginService, urls;
+
+    urls = {
+      loginUrl: urlTemplate(REST_URL.login, {}, {type: 'post'})
     };
 
+    loginService = angular.extend(
+      {},
+      CachedRequestHandler,
+      {
+        modelName: 'user',
+        baseURL: urls.base,
+        urls: urls
+      },
+      {
+        authentication: authentication
+      });
+
+    return loginService;
+
     function authentication (user) {
-      var loginUrl = REST_URL.login;
-      var resource = delegatorService.resourceService(loginUrl);
+      var resource = DelegatorService.resourceService(urls.loginUrl);
       return resource.save(user);
     }
   }

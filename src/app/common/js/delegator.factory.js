@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('nd')
-    .factory('delegatorService', delegatorService);
+    .factory('DelegatorService', delegatorService);
 
   /* @ngInject */
   function delegatorService (

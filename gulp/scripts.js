@@ -8,7 +8,7 @@ var $ = require('gulp-load-plugins')();
 var browserSync = require('browser-sync');
 
 gulp.task('scripts', function() {
-  return gulp.src(path.join(conf.paths.src, '/{app,components}/**/*.js'))
+  return gulp.src(conf.paths.scripts)
     .pipe($.plumber({
       handleError: conf.errorHandler
     }))

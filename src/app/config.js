@@ -3,7 +3,9 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    host: 'http://192.168.1.71:80/api/v1'
+    host: 'http://192.168.1.32:80/api/v1',
+    cache: 'appCache',
+    paramCache: 'appParamCache'
   })
   .constant('REST_URL', {
     login: '/user/login/?format=json'

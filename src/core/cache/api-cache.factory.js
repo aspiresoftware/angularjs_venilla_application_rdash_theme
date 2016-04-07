@@ -5,7 +5,7 @@
 
   /* @ngInject */
   function ApiCacheFactory(
-    $angularCacheFactory,
+    CacheFactory,
     paramCache,
     DelegatorService,
     APPLICATION
@@ -14,8 +14,8 @@
     var cacheName = APPLICATION.cache;
     var cacheOptions = {onExpire: onExpire};
 
-    apiCache = $angularCacheFactory.get(cacheName);
-    apiCache = apiCache || $angularCacheFactory(cacheName, cacheOptions);
+    apiCache = CacheFactory.get(cacheName);
+    apiCache = apiCache || CacheFactory(cacheName, cacheOptions);
 
     return apiCache;
 

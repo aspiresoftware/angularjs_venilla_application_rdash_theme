@@ -4,6 +4,7 @@
   angular.module('nd', [
     'ngLodash',
     'ngResource',
-    'ui.router'
+    'ui.router',
+    'angular-cache'
   ]);
 })();

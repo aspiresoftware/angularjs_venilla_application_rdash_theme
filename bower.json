@@ -23,6 +23,7 @@
     "angular-ui-router": "^0.2.18",
     "ng-lodash": "^0.4.0",
     "bourbon": "^4.2.6",
-    "font-awesome": "fontawesome#^4.5.0"
+    "font-awesome": "fontawesome#^4.5.0",
+    "angular-cache": "^4.5.0"
   }
 }

@@ -2,7 +2,7 @@
   <div class="card"></div>
   <div class="card">
     <h1 class="title">Login</h1>
-    <form ng-submit="login()">
+    <form>
       <div class="input-container">
         <nd-text-box
           ng-model="user.username"
@@ -20,7 +20,7 @@
         <div class="bar"></div>
       </div>
       <div class="button-container">
-        <nd-button nd-lable="Go"></nd-button>
+        <nd-button nd-lable="Go" nd-click="login()"></nd-button>
       </div>
       <div class="footer"><a href="#">Forgot your password?</a></div>
     </form>

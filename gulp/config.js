@@ -16,6 +16,7 @@ exports.paths = {
   src: 'src',
   dist: 'dist',
   tmp: '.tmp',
+  scripts: 'src/{app,components,core}/**/*.js',
   styles: ['src/{app,components,core,styles}/**/*.scss'],
   images: ['src/assets/images/**/*'],
   serverPath: 'aspire16@aspire16:/home/aspire16/Software/apache-tomcat-7.0.47/webapps',

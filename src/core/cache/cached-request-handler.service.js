@@ -7,7 +7,7 @@
     ErrorStore,
     DelegatorService,
     $http,
-    $angularCacheFactory,
+    CacheFactory,
     $q,
     $log,
     apiCache,
@@ -215,7 +215,7 @@
 
       if (this.modelName) {
         cacheName = APPLICATION.cache + '.' + this.modelName;
-        cache = $angularCacheFactory.get(cacheName) || $angularCacheFactory(cacheName);
+        cache = CacheFactory.get(cacheName) || CacheFactory(cacheName);
       } else {
         cache = apiCache;
       }

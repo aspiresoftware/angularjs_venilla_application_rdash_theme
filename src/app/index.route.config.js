@@ -2,9 +2,10 @@
   'use strict';
 
   angular.module('nd')
-  .config(configureRoutes);
+  .config(configRoutes);
 
-  function configureRoutes (
+  /* @ngInject */
+  function configRoutes (
     $stateProvider,
     $urlRouterProvider,
     PAGE_URL,

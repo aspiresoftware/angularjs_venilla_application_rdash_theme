@@ -5,7 +5,7 @@
 
   /* @ngInject */
   function ParamCacheFactory(
-    $angularCacheFactory,
+    CacheFactory,
     APPLICATION
   ) {
     var paramCache;
@@ -15,8 +15,8 @@
       recycleFreq: 10000
     };
 
-    paramCache = $angularCacheFactory.get(cacheName);
-    paramCache = paramCache || $angularCacheFactory(cacheName, cacheOptions);
+    paramCache = CacheFactory.get(cacheName);
+    paramCache = paramCache || CacheFactory(cacheName, cacheOptions);
 
     return paramCache;
   }
