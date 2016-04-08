@@ -6,15 +6,15 @@
 
   /* @ngInject */
   function delegatorService (
-    $resource,
-    APPLICATION
+    $resource
     ) {
     return {
       resourceService: resourceService
     };
 
     function resourceService (url) {
-      return $resource(APPLICATION.host + url);
+      /*return $resource(APPLICATION.host + url);*/
+      return $resource('http://jsonplaceholder.typicode.com/users');
     }
   }
 })();

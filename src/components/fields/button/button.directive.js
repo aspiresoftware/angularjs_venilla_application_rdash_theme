@@ -15,10 +15,10 @@
 
     function link(scope) {
       scope.clickButton = function() {
-        var promise = scope.ndClick();
-        promise.$promise.then(function(user) {
+        scope.ndClick();
+        /*promise.$promise.then(function(user) {
           console.log(user);
-        });
+        });*/
       };
     }
   }
