@@ -14,7 +14,6 @@
     APPLICATION,
     AUTH_EVENTS,
     PAGE_URL,
-    /*ErrorReporter,*/
     OfflineStorage,
     SessionStorage
   ) {
@@ -37,7 +36,7 @@
 
     defineStorageAccessor(storage.auth, 'accessToken', APPLICATION.accessToken);
     defineStorageAccessor(storage.auth, 'refreshToken', APPLICATION.refreshToken);
-    defineStorageAccessor(storage.data, 'userName', APPLICATION.userName);
+    defineStorageAccessor(storage.data, 'username', APPLICATION.username);
 
     Object.defineProperty(
       Session,
@@ -51,9 +50,9 @@
       var tokens = {};
       var data = {};
 
-      tokens[APPLICATION.accessToken] = user.access_token;
-      tokens[APPLICATION.refreshToken] = user.refresh_token;
-      data[APPLICATION.userName] = user.username;
+      tokens[APPLICATION.accessToken] = user.accessToken;
+      tokens[APPLICATION.refreshToken] = user.refreshToken;
+      data[APPLICATION.username] = user.username;
 
       storage.auth.update(tokens);
       storage.data.update(data);

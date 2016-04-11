@@ -9,9 +9,9 @@
     return {
       'username': '',
       'password': '',
-      'access_token': '',
-      'expire_date': '',
-      'refresh_token': '',
+      'accessToken': '',
+      'expireDate': '',
+      'refreshToken': '',
       'status': ''
     };
   }

@@ -30,8 +30,7 @@
     return loginService;
 
     function authentication (user) {
-      var resource = DelegatorService.resourceService(urls.loginUrl);
-      return resource.save(user);
+      return DelegatorService.post(urls.loginUrl, user);
     }
   }
 })();
