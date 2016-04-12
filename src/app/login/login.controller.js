@@ -6,8 +6,7 @@
     $scope,
     modelFactory,
     User,
-    LoginService,
-    Session
+    LoginService
     ) {
 
     $scope.user = modelFactory.create('user', User);
