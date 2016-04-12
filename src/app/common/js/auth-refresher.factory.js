@@ -14,7 +14,7 @@
     LoginService,
     Session
   ) {
-    $log = $log.context ('AuthRefresher');
+    $log = $log.context('AuthRefresher');
     var lockedForRefresh = false;
 
     return {

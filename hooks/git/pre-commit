@@ -14,17 +14,17 @@ pass=true
 
 for file in ${files}; do
     # Ignore Gulp files
-    if [ "${file}" = gulp/* ]; then
+    if [[ "${file}" = gulp/* ]]; then
         continue
     fi
 
     # Ignore E2E test files
-    if [ "${file}" = test/e2e/* ]; then
+    if [[ "${file}" = test/e2e/* ]]; then
         continue
     fi
 
     # Ignore Cordova-provided files
-    if [ "${file}" = platforms/* ]; then
+    if [[ "${file}" = platforms/* ]]; then
         continue
     fi
 
