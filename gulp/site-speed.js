@@ -1,8 +1,11 @@
 'use strict';
 
-var gulp = require('gulp');
-var psi = require('psi');
-var site = 'http://192.168.1.17:3000/';
+var gulp = require('gulp'),
+ngrok = require('ngrok'),
+psi = require('psi'),
+config = require('./config'),
+port = config.serverUrlPort;
+
 
 /*var key = '';*/
 
@@ -13,22 +16,29 @@ var site = 'http://192.168.1.17:3000/';
 // https://developers.google.com/speed/docs/insights/v2/getting-started
 
 gulp.task('mobile', function () {
-  return psi(site, {
-    // key: key
-    nokey: 'true',
-    strategy: 'mobile'
-  }).then(function (data) {
-    console.log('Speed score: ' + data.ruleGroups.SPEED.score);
-    console.log('Usability score: ' + data.ruleGroups.USABILITY.score);
+   ngrok.connect(port, function (err, url) {
+    return psi(url, {
+      key: config.pagespeedInsightKey,
+      strategy: 'mobile'
+    }).then(function (data) {
+      console.log('Speed score: ' + data.ruleGroups.SPEED.score);
+      console.log('Usability score: ' + data.ruleGroups.USABILITY.score);
+      ngrok.disconnect();
+      ngrok.kill();
+    });
   });
+
 });
 
 gulp.task('desktop', function () {
-  return psi(site, {
-    nokey: 'true',
-    // key: key,
-    strategy: 'desktop'
-  }).then(function (data) {
-    console.log('Speed score: ' + data.ruleGroups.SPEED.score);
+  ngrok.connect(port, function (err, url) {
+    return psi(url, {
+      key: config.pagespeedInsightKey,
+      strategy: 'desktop'
+    }).then(function (data) {
+      console.log('Speed score: ' + data.ruleGroups.SPEED.score);
+      ngrok.disconnect();
+      ngrok.kill();
+    });
   });
 });

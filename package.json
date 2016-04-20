@@ -12,7 +12,6 @@
     "bower": "^1.7.7",
     "browser-sync": "^2.11.1",
     "browser-sync-spa": "^1.0.3",
-    "chalk": "^1.1.3",
     "del": "^2.2.0",
     "eslint": "^2.4.0",
     "eslint-plugin-angular": "^1.0.0",
@@ -21,6 +20,7 @@
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-cache": "^0.4.3",
+    "gulp-debug": "^2.1.2",
     "gulp-eslint": "^2.0.0",
     "gulp-filter": "^4.0.0",
     "gulp-flatten": "^0.2.0",
@@ -41,7 +41,7 @@
     "gulp-size": "^2.1.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^1.5.3",
-    "gulp-useref": "~1.3.0",
+    "gulp-useref": "git://github.com/doxavore/gulp-useref#sourcemaps",
     "gulp-util": "^3.0.7",
     "gulp-war": "^0.1.4",
     "gulp-zip": "^3.2.0",
@@ -53,13 +53,15 @@
     "karma-angular-filesort": "^1.0.1",
     "karma-jasmine": "^0.3.8",
     "karma-phantomjs-launcher": "^1.0.0",
-    "lodash": "^4.6.1",
     "main-bower-files": "^2.11.1",
+    "ngrok": "^2.1.7",
     "rsyncwrapper": "^1.0.0",
-    "wiredep": "^4.0.0",
     "wrench": "^1.5.8"
   },
   "dependencies": {
-    "psi": "^2.0.3"
+    "chalk": "^1.1.3",
+    "lodash": "^4.11.1",
+    "psi": "^2.0.3",
+    "wiredep": "^4.0.0"
   }
 }

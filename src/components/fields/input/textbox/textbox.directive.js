@@ -11,7 +11,7 @@
         ngModel: '=',
         ndRequired: '='
       },
-      templateUrl: '../components/fields/input/textbox/textbox.template.html'
+      templateUrl: 'components/fields/input/textbox/textbox.template.html'
     };
   }
 })();

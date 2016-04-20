@@ -9,7 +9,7 @@
         ndLable: '@',
         ndClick: '&'
       },
-      templateUrl: '../components/fields/button/button.template.html',
+      templateUrl: 'components/fields/button/button.template.html',
       link: link
     };
 

@@ -8,15 +8,16 @@
     CacheFactory,
     APPLICATION
   ) {
-    var paramCache;
-    var cacheName = APPLICATION.paramCache;
-    var cacheOptions = {
+    var paramCache,
+    cacheFactory  = CacheFactory,
+    cacheName = APPLICATION.paramCache,
+    cacheOptions = {
       maxAge: 25000, // expired items in 25  seconds
       recycleFreq: 10000
     };
 
-    paramCache = CacheFactory.get(cacheName);
-    paramCache = paramCache || CacheFactory(cacheName, cacheOptions);
+    paramCache = cacheFactory.get(cacheName);
+    paramCache = paramCache || cacheFactory(cacheName, cacheOptions);
 
     return paramCache;
   }

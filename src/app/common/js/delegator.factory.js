@@ -217,11 +217,11 @@
     }
 
     function prepareRequest (inputConfig) {
-      var config            = angular.extend({headers: {}}, inputConfig);
-      var url               = config.url || '';
-      var urlNeedsExpansion = !(/^\w+:\/\//.test(url)) && !config.domainAlreadyAdded;
-      var headers           = config.headers;
-      var params            = {};
+      var config            = angular.extend({headers: {}}, inputConfig),
+      url               = config.url || '',
+      urlNeedsExpansion = !(/^\w+:\/\//.test(url)) && !config.domainAlreadyAdded,
+      headers           = config.headers,
+      params            = {};
 
       if (urlNeedsExpansion) {
         config.url = APPLICATION.host + url;
@@ -236,10 +236,15 @@
         angular.extend(params, config.data);
         config.data   = Utility.camelToSnakeCase(config.data);
       }
+      headers = addAuth(config, params, headers);
 
+
+      return config;
+    }
+
+    function addAuth(config, params, headers) {
+      var authHeader        = null;
       if (!config.noAuth) {
-        var authHeader = null;
-
         if (params.username && params.password) {
           authHeader = 'Basic ' + Base64.encode(params.username + ':' + params.password);
         } else if (params.refreshToken) {
@@ -255,9 +260,9 @@
           headers.Authorization = authHeader;
         }
       }
-
-      return config;
+      return headers;
     }
+
 
     function httpizePromise(config, promise) {
       promise.success = function(fn) {

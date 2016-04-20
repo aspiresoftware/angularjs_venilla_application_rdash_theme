@@ -8,11 +8,12 @@
       snakeToCamelCase: snakeToCamelCase,
       snakeToCamelCaseReplacer: snakeToCamelCaseReplacer,
       camelToSnakeCase: camelToSnakeCase,
-      camelToSnakeCaseReplacer: camelToSnakeCaseReplacer
+      camelToSnakeCaseReplacer: camelToSnakeCaseReplacer,
+      responseCommonHandler:responseCommonHandler
     };
 
     function pruneEmpty(obj) {
-      return function prune(current) {
+      return (function prune(current) {
         _.forOwn(current, function (value, key) {
           if (_.isUndefined(value) || _.isNull(value) || _.isNaN(value) ||
             (_.isString(value) && _.isEmpty(value)) ||
@@ -28,7 +29,7 @@
         }
         return current;
 
-      }(_.cloneDeep(obj));  // Do not modify the original object, create a clone instead
+      }(_.cloneDeep(obj)));
     }
 
     function snakeToCamelCase(response) {
@@ -71,6 +72,10 @@
 
     function camelToSnakeCaseReplacer(input) {
       return '_' + input.toLowerCase();
+    }
+
+    function responseCommonHandler(data) {
+      console.log(data);
     }
   }
 })();

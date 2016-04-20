@@ -11,7 +11,7 @@
         ngModel: '=',
         ndRequired: '='
       },
-      templateUrl: '../components/fields/input/password/password.template.html'
+      templateUrl: 'components/fields/input/password/password.template.html'
     };
   }
 })();

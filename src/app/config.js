@@ -3,7 +3,7 @@
 
   angular.module('nd')
   .constant('APPLICATION', {
-    host: 'http://192.168.1.43:80/api/v1',
+    host: 'http://192.168.1.29:80/api/v1',
     username: 'username',
     cache: 'appCache',
     paramCache: 'appParamCache',

@@ -26,6 +26,7 @@
     $rootScope,
     AUTH_EVENTS,
     Session,
+    Utility,
     AUTH_MESSAGE
     ) {
     //hendled 400: AUTH_EVENTS.badRequest
@@ -33,7 +34,7 @@
       if (resp && resp.data && resp.data.error && resp.data.error.message) {
         badRequest = resp.data.error.message;
       }
-      console.log(badRequest);
+      Utility.responseCommonHandler(badRequest);
     });
 
     //hendled 401: AUTH_EVENTS.notAuthenticated
@@ -43,22 +44,22 @@
         AUTH_MESSAGE.notAuthenticated;
 
       Session.logout();
-      console.log(message);
+      Utility.responseCommonHandler(message);
     });
 
     //hendled 403: AUTH_EVENTS.notAuthorized
     $rootScope.$on(AUTH_EVENTS.notAuthorized, function onNotAuthorized(ev, resp, forbiddenRequest) {
-      console.log(forbiddenRequest);
+      Utility.responseCommonHandler(forbiddenRequest);
     });
 
     //hendled 404: AUTH_EVENTS.notFound
     $rootScope.$on(AUTH_EVENTS.notFound, function onNotFound(ev, resp, notFoundRequest) {
-      console.log(notFoundRequest);
+      Utility.responseCommonHandler(notFoundRequest);
     });
 
     //hendled 408: AUTH_EVENTS.requestTimeout
     $rootScope.$on(AUTH_EVENTS.requestTimeout, function onRequestTimeout(ev, resp, requestTimeout) {
-      console.log(requestTimeout);
+      Utility.responseCommonHandler(requestTimeout);
     });
 
     // Handle 415: AUTH_EVENTS.upgradeRequired
@@ -81,19 +82,19 @@
           'Please upgrade to the latest version.';
       }
 
-      console.log(message);
+      Utility.responseCommonHandler(message);
     });
 
     //hendled 422: AUTH_EVENTS.unprocessableEntity
     $rootScope.$on(AUTH_EVENTS.unprocessableEntity, function onUnprocessableEntity(event, resp) {
-      console.log('unprocessableEntity');
+      Utility.responseCommonHandler('unprocessableEntity');
     });
 
     //hendled 429: AUTH_EVENTS.tooManyRequests
     $rootScope.$on(
       AUTH_EVENTS.tooManyRequests,
       function onTooManyRequests(ev, resp, tooManyRequests) {
-        console.log(tooManyRequests);
+        Utility.responseCommonHandler(tooManyRequests);
       }
     );
 
@@ -101,20 +102,20 @@
     $rootScope.$on(
       AUTH_EVENTS.internalServerError,
       function onServerError(ev, resp, internalServerError) {
-        console.log(internalServerError);
+        Utility.responseCommonHandler(internalServerError);
       }
     );
 
     //hendled 501: AUTH_EVENTS.notImplemented
     $rootScope.$on(AUTH_EVENTS.notImplemented, function onNotImplemented(ev, resp, notImplemented) {
-      console.log(notImplemented);
+      Utility.responseCommonHandler(notImplemented);
     });
 
     //hendled 503: AUTH_EVENTS.serviceUnavailable
     $rootScope.$on(
       AUTH_EVENTS.serviceUnavailable,
       function onServiceUnavailable(event, resp, serviceUnavailable) {
-        console.log(serviceUnavailable);
+        Utility.responseCommonHandler(serviceUnavailable);
       }
     );
 
@@ -122,18 +123,18 @@
     $rootScope.$on(
       AUTH_EVENTS.gatewayTimeout,
       function onGatewayTimeout(event, resp, gatewayTimeout) {
-        console.log(gatewayTimeout);
+        Utility.responseCommonHandler(gatewayTimeout);
       }
     );
 
     //hendled 520-524: AUTH_EVENTS.proxyErrors
     $rootScope.$on(AUTH_EVENTS.proxyErrors, function onProxyErrors(event, resp, proxyErrors) {
-      console.log(proxyErrors);
+      Utility.responseCommonHandler(proxyErrors);
     });
 
     //hendled 0: AUTH_EVENTS.networkIssue
     $rootScope.$on(AUTH_EVENTS.networkIssue, function onNetworkIssue(event, resp, networkIssue) {
-      console.log(networkIssue);
+      Utility.responseCommonHandler(networkIssue);
     });
   }
 })();

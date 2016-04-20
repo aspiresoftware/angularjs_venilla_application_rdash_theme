@@ -24,13 +24,21 @@
         urls: urls
       },
       {
-        authentication: authentication
+        authentication: authentication,
+        refreshToken: refreshToken
       });
 
     return loginService;
 
     function authentication (user) {
       return DelegatorService.post(urls.loginUrl, user);
+    }
+
+    function refreshToken(refreshTokenValue) {
+      var params  = {grantType: 'access_token', refreshToken: refreshTokenValue};
+      var config  = {noDelay: true};
+
+      return DelegatorService.post(REST_URL.authentication, params, config);
     }
   }
 })();

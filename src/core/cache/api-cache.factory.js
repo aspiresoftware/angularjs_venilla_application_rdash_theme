@@ -10,12 +10,13 @@
     DelegatorService,
     APPLICATION
   ) {
-    var apiCache;
+    var apiCache,
+    cacheFactory = CacheFactory;
     var cacheName = APPLICATION.cache;
     var cacheOptions = {onExpire: onExpire};
 
-    apiCache = CacheFactory.get(cacheName);
-    apiCache = apiCache || CacheFactory(cacheName, cacheOptions);
+    apiCache = cacheFactory.get(cacheName);
+    apiCache = apiCache || cacheFactory(cacheName, cacheOptions);
 
     return apiCache;
 

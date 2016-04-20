@@ -7,7 +7,7 @@ var conf = require('./config');
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('war', ['build'], function () {
+gulp.task('war', ['clean', 'build'], function () {
   gulp.src(['dist/**/*'])
     .pipe($.war({
       welcome: 'index.html',

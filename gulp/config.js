@@ -35,6 +35,16 @@ exports.production = !!util.env.production;
  */
 exports.warFileName = 'project.war';
 
+
+/**
+ * google pagespeed insight key
+ */
+exports.pagespeedInsightKey = 'AIzaSyCcCXPV7FlnlJHq-w3Vid_B02Q4x5LeBss';
+
+/**
+ * pagespeed serverurl port
+ */
+exports.serverUrlPort = 3000;
 /**
  *  Wiredep is the lib which inject bower dependencies in your project
  *  Mainly used to inject script tags in the index.html but also used

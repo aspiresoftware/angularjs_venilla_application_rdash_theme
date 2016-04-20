@@ -13,7 +13,8 @@
     apiCache,
     APPLICATION
   ) {
-    var CachedRequestHandler;
+    var CachedRequestHandler,
+    cacheFactory = CacheFactory;
 
     CachedRequestHandler = {
       find: find,
@@ -215,7 +216,7 @@
 
       if (this.modelName) {
         cacheName = APPLICATION.cache + '.' + this.modelName;
-        cache = CacheFactory.get(cacheName) || CacheFactory(cacheName);
+        cache = cacheFactory.get(cacheName) || cacheFactory(cacheName);
       } else {
         cache = apiCache;
       }

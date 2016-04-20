@@ -21,5 +21,5 @@ gulp.task('scripts', function() {
       stream: true
     }))
     .pipe($.size())
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve')));
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/')));
 });
