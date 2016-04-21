@@ -24,6 +24,8 @@
     "gulp-eslint": "^2.0.0",
     "gulp-filter": "^4.0.0",
     "gulp-flatten": "^0.2.0",
+    "gulp-fontgen": "^0.1.6",
+    "gulp-if": "^2.0.0",
     "gulp-imagemin": "^2.4.0",
     "gulp-inject": "^4.0.0",
     "gulp-jscs": "^3.0.2",
@@ -44,6 +46,7 @@
     "gulp-useref": "git://github.com/doxavore/gulp-useref#sourcemaps",
     "gulp-util": "^3.0.7",
     "gulp-war": "^0.1.4",
+    "gulp-watch": "^4.3.5",
     "gulp-zip": "^3.2.0",
     "http-proxy-middleware": "^0.12.0",
     "jscs": "^2.11.0",
@@ -56,6 +59,7 @@
     "main-bower-files": "^2.11.1",
     "ngrok": "^2.1.7",
     "rsyncwrapper": "^1.0.0",
+    "run-sequence": "^1.1.5",
     "wrench": "^1.5.8"
   },
   "dependencies": {

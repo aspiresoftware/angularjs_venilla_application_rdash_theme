@@ -9,7 +9,7 @@ var _ = require('lodash');
 var browserSync = require('browser-sync');
 var wiredep = require('wiredep').stream;
 
-gulp.task('styles', function () {
+gulp.task('styles', ['fonts'],function () {
   var sassOptions = {
     style: 'expanded'
   };

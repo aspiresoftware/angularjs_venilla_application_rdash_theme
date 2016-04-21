@@ -1,8 +1,9 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./config');
+var path = require('path'),
+gulp     = require('gulp'),
+conf     = require('./config');
+copyFonts  = copyFonts;
 
 // Load plugins to $.pluginName
 var $ = require('gulp-load-plugins')({
@@ -10,10 +11,14 @@ var $ = require('gulp-load-plugins')({
   pattern: ['gulp-*', 'uglify-save-license', 'del', 'merge-stream']
 });
 
+function copyFonts() {
+ return  gulp.src(path.join(conf.paths.tmp,'/serve/fonts/**/*'))
+  .pipe(gulp.dest(path.join(conf.paths.dist , '/fonts/')));
+}
+
 gulp.task('partials', function () {
   return gulp.src([
-    path.join(conf.paths.src, '/**/*.html'),
-    path.join(conf.paths.tmp, '/serve/app/**/*.html')
+    path.join(conf.paths.src, '/**/*.html')
   ])
     .pipe($.plumber({
       handleError: conf.errorHandler
@@ -42,15 +47,10 @@ gulp.task('html', ['inject', 'partials'], function () {
     addRootSlash: false
   };
 
-  var htmlFilter = $.filter('*.html', {
-    restore: true
-  });
-  var jsFilter = $.filter('**/*.js', {
-    restore: true
-  });
-  var cssFilter = $.filter('**/*.css', {
-    restore: true
-  });
+  var cssFilter = /\.css$/;
+  var htmlFilter = /\.html$/;
+  var jsFilter = /\.js$/;
+  var fontFilter = /\.(eot,svg,ttf,woff,woff2)$/;
   // Patched version of gulp-useref required for sourcemaps option
   var assets;
 
@@ -58,34 +58,24 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe(assets = $.useref.assets())
     .pipe($.rev())
-    .pipe(jsFilter)
-    .pipe($.sourcemaps.init())
-    .pipe($.ngAnnotate())
-    .pipe($.uglify({
-        preserveComments: $.uglifySaveLicense
-      })).on('error', conf.errorHandler('Uglify'))
-    .pipe($.sourcemaps.write('maps'))
-    .pipe(jsFilter.restore)
-    .pipe(cssFilter)
-    .pipe($.sourcemaps.init())
+    .pipe($.if(jsFilter, $.ngAnnotate()))
+    .pipe($.if(jsFilter, $.uglify({preserveComments: $.uglifySaveLicense})))
+    .on('error', conf.errorHandler('Uglify'))
     .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
-    .pipe($.minifyCss({
+    .pipe($.if(cssFilter, $.minifyCss({
       processImport: false
-    }))
-    .pipe($.sourcemaps.write('maps'))
-    .pipe(cssFilter.restore)
+    })))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.revReplace())
-    .pipe(htmlFilter)
-    .pipe($.minifyHtml({
+    .pipe($.if(htmlFilter,$.minifyHtml({
       empty: true,
       spare: true,
       quotes: true,
       conditionals: true
-    }))
-    .pipe(htmlFilter.restore)
+    })))
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
+    .pipe($.if(fontFilter, copyFonts()))
     .pipe($.size({
       title: path.join(conf.paths.dist, '/'), showFiles: true
     }));

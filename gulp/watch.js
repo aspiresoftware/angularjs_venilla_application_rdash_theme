@@ -1,8 +1,8 @@
 'use strict';
 
-var path = require('path');
-var gulp = require('gulp');
-var conf = require('./config');
+var path = require('path'),
+ gulp = require('gulp'),
+ conf = require('./config');
 
 var browserSync = require('browser-sync');
 
@@ -25,7 +25,7 @@ gulp.task('watch', ['inject'], function () {
     }
   });
 
-  gulp.watch(path.join(conf.paths.src, '/{app,components}/**/*.js'), function(event) {
+  gulp.watch(path.join(conf.paths.src, '/{app,components,core}/**/*.js'), function(event) {
     if (isOnlyChange(event)) {
       gulp.start('scripts');
     } else {

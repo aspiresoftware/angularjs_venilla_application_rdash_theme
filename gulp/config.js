@@ -15,6 +15,7 @@ var util = require('gulp-util');
 exports.paths = {
   src: 'src',
   dist: 'dist',
+  'bowerComponents':'bower_components',
   tmp: '.tmp',
   scripts: 'src/{app,components,core}/**/*.js',
   styles: ['src/{app,components,core,styles}/**/*.scss'],

@@ -1,21 +1,21 @@
 'use strict';
 
-var gulp = require('gulp');
-var path = require('path');
-var conf = require('./config');
+var gulp = require('gulp'),
+ path  = require('path'),
+ conf  = require('./config');
 
 var $ = require('gulp-load-plugins')();
 
-var mainBowerFiles = require('main-bower-files');
 
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
 gulp.task('fonts', function () {
-  return gulp.src(mainBowerFiles())
+  return gulp.src([path.join(conf.paths.bowerComponents,
+   '/font-awesome-sass/assets/fonts/**'),
+  path.join(conf.paths.bowerComponents,
+   '/bootstrap-sass/assets/fonts/**')])
     .pipe($.plumber({
       handleError: conf.errorHandler
     }))
-    .pipe($.filter('**/*.{eot,svg,ttf,woff,woff2}'))
-    .pipe($.flatten())
-    .pipe(gulp.dest(path.join(conf.paths.dist, '/fonts/')));
+    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/fonts/')));
 });
