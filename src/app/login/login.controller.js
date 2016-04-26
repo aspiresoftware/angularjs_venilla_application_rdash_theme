@@ -4,6 +4,7 @@
 
   function loginController(
     $scope,
+    $state,
     modelFactory,
     User,
     LoginService,
@@ -17,7 +18,9 @@
     function login() {
       var authPromise = LoginService.authentication($scope.user);
       /*return authPromise;*/
-      authPromise.then(loginSuccess, failure);
+      // TODO: uncomment following
+      // authPromise.then(loginSuccess, failure);
+      $state.go('dashboard');
     }
 
     function loginSuccess (result) {

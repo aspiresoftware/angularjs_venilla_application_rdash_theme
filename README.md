@@ -1,4 +1,4 @@
-This is vanilla nagular project structure. It is common structure which you can use to any project for kick starting.
+This is vanilla nagular project structure integrated with rdash theme. It is common structure which you can use to any project for kick starting.
 
 It has model based approached, all the models are placed inside 'model' folder of app.
 

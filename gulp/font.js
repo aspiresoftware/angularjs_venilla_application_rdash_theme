@@ -13,7 +13,9 @@ gulp.task('fonts', function () {
   return gulp.src([path.join(conf.paths.bowerComponents,
    '/font-awesome-sass/assets/fonts/**'),
   path.join(conf.paths.bowerComponents,
-   '/bootstrap-sass/assets/fonts/**')])
+   '/bootstrap-sass/assets/fonts/**'),
+  path.join(conf.paths.bowerComponents,
+   '/rdash-ui/dist/fonts/**')])
     .pipe($.plumber({
       handleError: conf.errorHandler
     }))
